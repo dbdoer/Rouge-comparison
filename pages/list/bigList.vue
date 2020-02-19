@@ -4,7 +4,7 @@
 		<view class="cu-bar search header">
 			<view class="search-form round my-shadow">
 				<text class="cuIcon-search"></text>
-				<input @focus="InputFocus" @blur="InputBlur" :adjust-position="true" type="text" placeholder="搜索美妆产品" confirm-type="search"></input>
+				<input class="text-center" @focus="InputFocus" @blur="InputBlur" :adjust-position="true" type="text" placeholder="搜索美妆产品" confirm-type="search"></input>
 			</view>
 			<view class="action">
 				<button class="cu-btn bg-mine shadow-blur round">搜索</button>
@@ -18,7 +18,7 @@
 					<view class="img align-center">
 						<image mode="widthFix" :src="product.img"></image>
 					</view>
-					<view class="name">{{ product.name }}</view>
+					<view class="name">{{ product.name1 }}{{ product.name2 }}{{ product.name3 }}</view>
 				</view>
 			</view>
 		</view>
@@ -53,7 +53,10 @@
 		methods: {
 			//商品跳转
 			toGoods(e) {
-				uni.setStorageSync('goodsName', e.name);
+				uni.setStorageSync('goodsImg', e.img);
+				uni.setStorageSync('goodsName', e.name1+e.name2+e.name3);
+				uni.setStorageSync('goodsName1', e.name1);
+				uni.setStorageSync('goodsName3', e.name3);
 				uni.navigateTo({
 					url: "../goods/goods",
 					animationType: 'pop-in',

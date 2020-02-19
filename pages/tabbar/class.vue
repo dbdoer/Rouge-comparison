@@ -26,7 +26,7 @@
 					</view>
 					<view class="cu-list round-bottom menu-avatar">
 						<view class="cu-item" v-for="(box,i) in category.list" :key="i" @tap="toCategory(box)">
-							<image class="cu-avatar headround lg my-shadow" :src="'http://120.55.87.80/img/brand/'+box.img"></image>
+							<image class="cu-avatar headround lg" :src="'http://120.55.87.80/img/brand/'+box.img"></image>
 							<view class="content">
 								<view style="color: #7A7E83;">{{box.name}}</view>
 							</view>
@@ -54,17 +54,17 @@
 							},
 							{
 								enname: 'Lipstick',
-								name: '兰蔻（LANCOME）',
+								name: '兰蔻',
 								img: '2.jpg'
 							},
 							{
 								enname: 'Lipstick',
-								name: '香奈儿（Chanel）',
+								name: '香奈儿',
 								img: '3.jpg'
 							},
 							{
 								enname: 'Lipstick',
-								name: '迪奥（Dior）',
+								name: '迪奥',
 								img: '4.jpg'
 							},
 							{
@@ -79,12 +79,12 @@
 							},
 							{
 								enname: 'Lipstick',
-								name: '圣罗兰（YSL）',
+								name: '圣罗兰',
 								img: '7.jpg'
 							},
 							{
 								enname: 'Lipstick',
-								name: 'Bobbi Brown',
+								name: '芭比波朗',
 								img: '8.jpg'
 							},
 							{
@@ -99,12 +99,12 @@
 							},
 							{
 								enname: 'Lipstick',
-								name: '阿玛尼（ARMANI）',
+								name: '阿玛尼',
 								img: '11.jpg'
 							},
 							{
 								enname: 'Lipstick',
-								name: 'TOM FORD',
+								name: '汤姆福特',
 								img: '12.jpg'
 							},
 							{

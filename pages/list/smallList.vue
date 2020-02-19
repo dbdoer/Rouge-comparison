@@ -2,14 +2,15 @@
 	<view>
 		<w-loading mask="false" click="true" ref="loading"></w-loading>
 		<view class="cu-bar search header">
-			<view class="search-form round" style="box-shadow:0px 0px  10px 0px #d0d0d0;">
+			<view class="search-form round my-shadow">
 				<text class="cuIcon-search"></text>
-				<input @focus="InputFocus" @blur="InputBlur" :adjust-position="true" type="text" placeholder="搜索美妆产品" confirm-type="search"></input>
+				<input class="text-center" @focus="InputFocus" @blur="InputBlur" :adjust-position="true" type="text" :placeholder="brand" confirm-type="search"></input>
 			</view>
 			<view class="action">
 				<button class="cu-btn bg-mine shadow-blur round">搜索</button>
 			</view>
 		</view>
+		
 		<view class="goods-list">
 			<!-- <view class="title">{{uni.getStorageSync('catName')}}</view> -->
 			<view class="product-list">
@@ -17,7 +18,7 @@
 					<view class="img align-center">
 						<image mode="widthFix" :src="product.img"></image>
 					</view>
-					<view class="name">{{ product.name }}</view>
+					<view class="name">{{ product.name1 }}{{ product.name2 }}{{ product.name3 }}</view>
 				</view>
 			</view>
 		</view>
@@ -32,12 +33,14 @@
 	export default {
 		data() {
 			return {
+				brand: null,
 				productList: [],
 			}
 		},
 		created() { //此处用created相当于对前端页面数据进行初始化  
 			var address = 'http://120.55.87.80/server/smallList/' + uni.getStorageSync('enName') + '.php';
 			var value = uni.getStorageSync('brandName');
+			this.brand = value;
 			http.post(address, value).then(res => {
 				//这里是ES6的写法，get请求的地址
 				this.productList = res.data; //获取数据  
@@ -52,7 +55,10 @@
 		methods: {
 			//商品跳转
 			toGoods(e) {
-				uni.setStorageSync('goodsName', e.name);
+				uni.setStorageSync('goodsImg', e.img);
+				uni.setStorageSync('goodsName', e.name1+e.name2+e.name3);
+				uni.setStorageSync('goodsName1', e.name1);
+				uni.setStorageSync('goodsName3', e.name3);
 				uni.navigateTo({
 					url: "../goods/goods",
 					animationType: 'pop-in',
@@ -64,7 +70,7 @@
 </script>
 
 <style lang="scss">
-	.header {
+.header {
 		background-color: #F5F6FA;
 		position: fixed;
 		top: auto;
@@ -88,7 +94,7 @@
 				border-radius: 50rpx;
 				display: flex;
 				justify-content: space-between;
-				background-color: #fff;
+				background-color: #FFFFFF;
 				margin: 0 0 30rpx 0;
 				// box-shadow: 0px 0px 10px 0px #d0d0d0;
 

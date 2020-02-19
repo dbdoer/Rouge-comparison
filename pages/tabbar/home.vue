@@ -28,7 +28,11 @@
 			<view class="product-list">
 				<view class="product" v-for="(product,index) in productList" :key="index" @tap="toGoods(product)">
 					<image mode="widthFix" :src="product.img"></image>
-					<view class="name">{{ product.name }}</view>
+					<view class="name">
+						<view>{{ product.name1 }}</view>
+						<view>{{ product.name2 }}</view>
+						<view>{{ product.name3 }}</view>
+					</view>
 				</view>
 			</view>
 			<view class="bottom-text">到底啦!</view>
@@ -157,8 +161,11 @@
 			},
 			//商品跳转
 			toGoods(e) {
-				uni.setStorageSync('enName', 'Rec');
-				uni.setStorageSync('goodsName', e.name);
+				uni.setStorageSync('enName', e.class);
+				uni.setStorageSync('goodsImg', e.img);
+				uni.setStorageSync('goodsName', e.name1 + e.name2 + e.name3);
+				uni.setStorageSync('goodsName1', e.name1);
+				uni.setStorageSync('goodsName3', e.name3);
 				uni.navigateTo({
 					url: "../goods/goods",
 					animationType: 'pop-in',
