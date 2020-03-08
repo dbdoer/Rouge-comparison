@@ -15,8 +15,8 @@
 			<view class="platform-list">
 				<view class="platform align-center">
 					<view class="background-left align-center">
-						<view v-if="this.jdInfo != ''" class="price">￥{{ this.jdInfo.price }}</view>
-						<view v-else="this.jdInfo == ''" class="price">暂无</view>
+						<view v-if="this.jdInfo !== null" class="price">￥{{ jdInfo.price }}</view>
+						<view v-if="this.jdInfo === null" class="price">暂无</view>
 					</view>
 					<button class="background-right cu-btn round align-center" @tap="toShop(good)">
 						<view class="name">京东 TO SHOP</view>
@@ -26,8 +26,8 @@
 			<view class="platform-list">
 				<view class="platform align-center">
 					<view class="background-left align-center">
-						<view v-if="this.tmInfo != ''" class="price">￥{{ this.tmInfo.price }}</view>
-						<view v-else="this.tmInfo == ''" class="price">暂无</view>
+						<view v-if="this.tmInfo !== null" class="price">￥{{ tmInfo.price }}</view>
+						<view v-if="this.tmInfo === null" class="price">暂无</view>
 					</view>
 					<button class="background-right cu-btn round align-center" @tap="toShop(good)">
 						<view class="name">天猫 TO SHOP</view>
@@ -68,8 +68,8 @@
 	export default {
 		data() {
 			return {
-				jdInfo: [],
-				tmInfo: [],
+				jdInfo: null,
+				tmInfo: null,
 				name: null,
 				img: null,
 				collectIcon: null,

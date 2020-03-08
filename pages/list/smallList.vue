@@ -44,7 +44,7 @@
 				enName: uni.getStorageSync('enName'),
 				value: uni.getStorageSync('brandName')
 			}).then(res => {
-				//这里是ES6的写法，get请求的地址
+				//这里是ES6的写法，get请求的地址	
 				this.productList = res.data; //获取数据  
 				console.log('success');
 				console.log(this.productList);
