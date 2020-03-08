@@ -32,21 +32,17 @@
 			"navigationBarTitleText": "美妆详情"
 		}
 	}, {
-		"path": "pages/login/login",
-		"style": {
-			"navigationStyle": "custom"
-		}
-	}, {
-		"path": "pages/login/register",
-		"style": {
-			"navigationStyle": "custom"
-		}
-	}, {
 		"path": "pages/shopweb/shopweb",
 		"style": {
 			"navigationBarTitleText": "SHOP"
 		}
-	}],
+	}    ,{
+            "path" : "pages/search/search",
+            "style" : {
+				"navigationBarTitleText": "搜索结果"
+			}
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "拟胭脂",

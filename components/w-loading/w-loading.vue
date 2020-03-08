@@ -86,7 +86,7 @@
 
 	/* loading加载动画的css */
 	.wrapper {
-		border-bottom: solid 1upx #F8F8F8;
+		border-bottom: solid 1upx #F5F6FA;
 		height: 100upx;
 		left: 50%;
 		overflow: hidden;
@@ -105,7 +105,7 @@
 	}
 
 	.wrapper .rainbow:after {
-		background-color: #F8F8F8;
+		background-color: #F5F6FA;
 		bottom: 100upx;
 		content: "";
 		left: 0;

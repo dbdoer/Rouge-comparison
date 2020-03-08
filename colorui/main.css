@@ -574,7 +574,7 @@ radio.white.checked .uni-radio-input {
 /* -- 阴影 -- */
 
 .my-shadow {
-	box-shadow:0px 0px  10px 0px #d0d0d0;
+	box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
 }
 
 .shadow[class*='white'] {
@@ -1483,8 +1483,8 @@ button.cuIcon.lg {
 
 .cu-list.card-menu {
 	overflow: hidden;
-	margin-right: 30upx;
-	margin-left: 30upx;
+	/* margin-right: 30upx;
+	margin-left: 30upx; */
 	border-radius: 50upx
 }
 

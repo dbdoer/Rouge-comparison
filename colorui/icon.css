@@ -155,10 +155,12 @@
 
 .cuIcon-likefill:before {
 	content: "\e668";
+	color: #CF6C7E;
 }
 
 .cuIcon-like:before {
 	content: "\e669";
+	color: #CF6C7E;
 }
 
 .cuIcon-notificationfill:before {

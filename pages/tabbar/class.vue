@@ -3,10 +3,19 @@
 		<view class="cu-bar search header">
 			<view class="search-form round my-shadow">
 				<text class="cuIcon-search"></text>
-				<input @focus="InputFocus" @blur="InputBlur" :adjust-position="false" type="text" placeholder="搜索美妆产品" confirm-type="search"></input>
+				<input 
+					class="text-center" 
+					@focus="InputFocus" 
+					@blur="InputBlur" 
+					@confirm="toSearch()" 
+					type="text" 
+					placeholder="搜索美妆产品" 
+					confirm-type="search"
+					v-model.trim="searchText">
+				</input>
 			</view>
 			<view class="action">
-				<button class="cu-btn bg-mine shadow-blur round">搜索</button>
+				<button class="cu-btn bg-mine shadow-blur round" @tap="toSearch()">搜索</button>
 			</view>
 		</view>
 		<view class="VerticalBox">
@@ -42,6 +51,8 @@
 	export default {
 		data() {
 			return {
+				InputBottom: 0,
+				searchText: '',	//搜索关键字
 				showCategoryIndex: 0,
 				//分类列表
 				categoryList: [{
@@ -89,12 +100,7 @@
 							},
 							{
 								enname: 'Lipstick',
-								name: 'CL/胡萝卜丁',
-								img: '9.jpg'
-							},
-							{
-								enname: 'Lipstick',
-								name: 'M.A.C',
+								name: '魅可',
 								img: '10.jpg'
 							},
 							{
@@ -106,16 +112,6 @@
 								enname: 'Lipstick',
 								name: '汤姆福特',
 								img: '12.jpg'
-							},
-							{
-								enname: 'Lipstick',
-								name: 'NARS',
-								img: '13.jpg'
-							},
-							{
-								enname: 'Lipstick',
-								name: 'CPB',
-								img: '14.jpg'
 							},
 							{
 								enname: 'Lipstick',
@@ -134,32 +130,32 @@
 							},
 							{
 								enname: 'Foundation',
-								name: '兰蔻（LANCOME）',
+								name: '兰蔻',
 								img: '2.jpg'
 							},
 							{
 								enname: 'Foundation',
-								name: 'CPB',
+								name: '肌肤之钥',
 								img: '14.jpg'
 							},
 							{
 								enname: 'Foundation',
-								name: '圣罗兰（YSL）',
+								name: '圣罗兰',
 								img: '7.jpg'
 							},
 							{
 								enname: 'Foundation',
-								name: '阿玛尼（ARMANI）',
+								name: '阿玛尼',
 								img: '11.jpg'
 							},
 							{
 								enname: 'Foundation',
-								name: '迪奥（Dior）',
+								name: '迪奥',
 								img: '4.jpg'
 							},
 							{
 								enname: 'Foundation',
-								name: 'Bobbi Brown',
+								name: '芭比波朗',
 								img: '8.jpg'
 							},
 							{
@@ -169,7 +165,7 @@
 							},
 							{
 								enname: 'Foundation',
-								name: 'NARS',
+								name: '纳斯',
 								img: '13.jpg'
 							},
 							{
@@ -184,13 +180,8 @@
 							},
 							{
 								enname: 'Foundation',
-								name: 'LA MER',
+								name: '海蓝之谜',
 								img: '16.jpg'
-							},
-							{
-								enname: 'Foundation',
-								name: 'Covermark',
-								img: '17.jpg'
 							}
 						]
 					},
@@ -681,6 +672,20 @@
 
 		},
 		methods: {
+			InputFocus(e) {
+				this.InputBottom = e.detail.height
+			},
+			InputBlur(e) {
+				this.InputBottom = 0
+			},
+			toSearch(e) {
+				uni.setStorageSync('searchText', this.searchText)
+				uni.navigateTo({
+					url: "../search/search",
+					animationType: 'pop-in',
+					animationDuration: 200
+				});
+			},
 			//分类切换显示
 			showCategory(index) {
 				this.showCategoryIndex = index;

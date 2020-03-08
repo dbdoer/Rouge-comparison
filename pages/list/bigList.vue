@@ -4,7 +4,7 @@
 		<view class="cu-bar search header">
 			<view class="search-form round my-shadow">
 				<text class="cuIcon-search"></text>
-				<input class="text-center" @focus="InputFocus" @blur="InputBlur" :adjust-position="true" type="text" placeholder="搜索美妆产品" confirm-type="search"></input>
+				<input class="text-center" @focus="InputFocus" @blur="InputBlur" :adjust-position="true" type="text" :placeholder="catName" confirm-type="search"></input>
 			</view>
 			<view class="action">
 				<button class="cu-btn bg-mine shadow-blur round">搜索</button>
@@ -12,9 +12,8 @@
 		</view>
 		
 		<view class="goods-list">
-			<!-- <view class="title">{{uni.getStorageSync('catName')}}</view> -->
 			<view class="product-list">
-				<view class="product align-center" :key="product.price" v-for="product in productList" @tap="toGoods(product)">
+				<view class="product align-center" :key="index" v-for="(product, index) in productList" @tap="toGoods(product)">
 					<view class="img align-center">
 						<image mode="widthFix" :src="product.img"></image>
 					</view>
@@ -33,10 +32,13 @@
 	export default {
 		data() {
 			return {
+				catName: null,
 				productList: [],
 			}
 		},
 		created() { //此处用created相当于对前端页面数据进行初始化  
+			var catName = uni.getStorageSync('catName');
+			this.catName = catName;
 			var value = uni.getStorageSync('enName');
 			var address = 'http://120.55.87.80/server/bigList/bigList.php';
 			http.post(address, value).then(res => {

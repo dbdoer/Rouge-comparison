@@ -187,7 +187,7 @@
 			height: 308rpx;
 			overflow: hidden;
 			border-radius: 50rpx;
-			// box-shadow: 0rpx 8rpx 25rpx rgba(0, 0, 0, 0.2);
+			box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
 			//兼容ios，微信小程序
 			position: relative;
 			z-index: 1;

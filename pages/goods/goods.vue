@@ -1,30 +1,62 @@
 <template>
 	<view>
-		<w-loading mask="false" click="true" ref="loading"></w-loading>
-		<view :key="good.price" v-for="good in goods" style="width: 100%;">
-			<view class="picture">
-				<image class="shadow-blur round" mode="widthFix" :src="img"></image>
+		<!-- <w-loading mask="false" click="true" ref="loading"></w-loading> -->
+		<view class="picture">
+			<image class="shadow-blur round" mode="widthFix" :src="img"></image>
+		</view>
+		<view class="collection align-center">
+			<view class="name">{{ name }}</view>
+			<view class="icon-box">
+				<button class="icon-round cu-btn size" :class="collectIcon" @tap="toCollect()"></button>
 			</view>
-			<view class="collection align-center">
-				<view class="name">{{ name }}</view>
-				<view class="icon-box">
-					<button class="icon-round cu-btn cuIcon-like lg"></button>
+		</view>
+
+		<view class="platform-box">
+			<view class="platform-list">
+				<view class="platform align-center">
+					<view class="background-left align-center">
+						<view v-if="this.jdInfo != ''" class="price">￥{{ this.jdInfo.price }}</view>
+						<view v-else="this.jdInfo == ''" class="price">暂无</view>
+					</view>
+					<button class="background-right cu-btn round align-center" @tap="toShop(good)">
+						<view class="name">京东 TO SHOP</view>
+					</button>
 				</view>
 			</view>
-
-			<view class="platform-box">
-				<view class="platform-list">
-					<view class="platform align-center">
-						<view class="background-left align-center">
-							<view class="price">￥{{ good.price }}</view>
-						</view>
-						<button class="background-right cu-btn round align-center" @tap="toShop(good)">
-							<view class="name">{{ good.brand }} TO SHOP</view>
-						</button>
+			<view class="platform-list">
+				<view class="platform align-center">
+					<view class="background-left align-center">
+						<view v-if="this.tmInfo != ''" class="price">￥{{ this.tmInfo.price }}</view>
+						<view v-else="this.tmInfo == ''" class="price">暂无</view>
 					</view>
+					<button class="background-right cu-btn round align-center" @tap="toShop(good)">
+						<view class="name">天猫 TO SHOP</view>
+					</button>
+				</view>
+			</view>
+			<view class="platform-list">
+				<view class="platform align-center">
+					<view class="background-left align-center">
+						<view class="price">暂无</view>
+					</view>
+					<button class="background-right cu-btn round align-center" @tap="toShop(good)">
+						<view class="name">小红书 TO SHOP</view>
+					</button>
+				</view>
+			</view>
+			<view class="platform-list">
+				<view class="platform align-center">
+					<view class="background-left align-center">
+						<view class="price">暂无</view>
+					</view>
+					<button class="background-right cu-btn round align-center" @tap="toShop(good)">
+						<view class="name">拼多多 TO SHOP</view>
+					</button>
 				</view>
 			</view>
 		</view>
+		<view style="height: 50rpx;"></view>
+	</view>
 	</view>
 </template>
 
@@ -36,31 +68,54 @@
 	export default {
 		data() {
 			return {
-				goods: [],
+				jdInfo: [],
+				tmInfo: [],
 				name: null,
 				img: null,
+				collectIcon: null,
 			}
 		},
 		created() { //此处用created相当于对前端页面数据进行初始化  
-			var goodsName = uni.getStorageSync('goodsName');
-			var goodsImg = uni.getStorageSync('goodsImg');
-			var value = '%' + uni.getStorageSync('goodsName1') + '%' + uni.getStorageSync('goodsName3') + '%';
-			var address = 'http://120.55.87.80/server/Goods/' + uni.getStorageSync('enName') + 'Goods.php';
+			this.name = uni.getStorageSync('goodsName');
+			this.img = uni.getStorageSync('goodsImg');
+			
+			// var value = '%' + uni.getStorageSync('goodsName1') + '%' + uni.getStorageSync('goodsName3') + '%';
+			var address = 'http://120.55.87.80/server/Goods/Goods.php';
 
-			this.name = goodsName;
-			this.img = goodsImg;
-			http.post(address, value).then(res => {
-				//这里是ES6的写法，get请求的地址
-				this.goods = res.data; //获取数据  
+			http.post(address, {
+				enName: uni.getStorageSync('enName'),
+				brand: '京东',
+				value: '%' + uni.getStorageSync('goodsName1') + '%' + uni.getStorageSync('goodsName3') + '%'
+			}).then(res => {
+				this.jdInfo = res.data; //获取数据  
 				console.log('success');
-				console.log(this.goods);
-				this.$refs.loading.close();
+				console.log(this.jdInfo);
+				// this.$refs.loading.close();
+			}),
+			http.post(address, {
+				enName: uni.getStorageSync('enName'),
+				brand: '天猫',
+				value: '%' + uni.getStorageSync('goodsName1') + '%' + uni.getStorageSync('goodsName3') + '%'
+			}).then(res => {
+				this.tmInfo = res.data; //获取数据  
+				console.log('success');
+				console.log(this.tmInfo);
+				// this.$refs.loading.close();
 			})
 		},
 		onReady() {
-			this.$refs.loading.open()
+			// this.$refs.loading.open();
+			this.collectIcon = 'cuIcon-like'
 		},
 		methods: {
+			toCollect() {
+				if(this.collectIcon == 'cuIcon-like') {
+					this.collectIcon = 'cuIcon-likefill'
+				}
+				else if(this.collectIcon == 'cuIcon-likefill') {
+					this.collectIcon = 'cuIcon-like'
+				}
+			},
 			toShop(e) {
 				uni.setStorageSync('webUrl', e.address);
 				uni.navigateTo({
@@ -91,29 +146,33 @@
 			width: 100%;
 		}
 	}
-	
+
 	.collection {
 		width: 100%;
 		display: flex;
 		margin-top: 70rpx;
 		margin-bottom: 70rpx;
-		
+
 		.name {
 			width: 55%;
 			margin-left: 10%;
 			font-weight: 600;
 			font-size: 35rpx;
 		}
-		
+
 		.icon-box {
 			width: 35%;
-			
+
 			.icon-round {
 				width: 100rpx;
 				height: 100rpx;
 				margin-left: 35%;
 				border-radius: 50rpx;
 				background-color: #FFFFFF;
+			}
+			
+			.size {
+				font-size: 40rpx;
 			}
 		}
 	}
@@ -133,26 +192,26 @@
 				border-radius: 50rpx;
 				display: flex;
 				background-color: #FFFFFF;
-				margin: 0 0 30rpx 0;
-				
+				margin: 0 0 50rpx 0;
+
 				.background-left {
 					width: 40%;
 					height: 120rpx;
 					font-size: 35rpx;
-					
+
 					.price {
 						margin: 0 auto;
 						text-align: center;
 						margin-top: 38rpx;
 					}
 				}
-				
+
 				.background-right {
 					width: 60%;
 					height: 90rpx;
 					margin-right: 30rpx;
 					background-color: #CF6C7E;
-					
+
 					.name {
 						text-align: center;
 						color: #FFFFFF;

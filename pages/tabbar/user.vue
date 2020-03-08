@@ -2,7 +2,7 @@
 	<view>
 		<!-- 用户信息 -->
 		<view class="user">
-			<block v-if="hasUserInfo === false">
+			<block v-if="hasUserInfo == false">
 				<view class="user-box">
 					<view class="headinfo">
 						<!-- 授权登录框 -->
@@ -16,7 +16,7 @@
 					</view>
 				</view>
 			</block>
-			<block v-if="hasUserInfo === true">
+			<block v-if="hasUserInfo == true">
 				<view class="user-box">
 					<view class="headinfo">
 						<!-- 昵称和个性签名 -->
@@ -193,7 +193,7 @@
 			text-align: center;
 			background-color: #CF6C7E;
 			border-radius: 50rpx;
-			box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+			box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
 
 			.headinfo {
 				display: inline-block;
@@ -204,7 +204,7 @@
 					width: 300rpx;
 					border-radius: 50rpx;
 					background-color: #FFFFFF;
-					box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+					box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
 					margin-top: 25rpx;
 					margin-left: 0rpx;
 				}
@@ -225,12 +225,14 @@
 					}
 				}
 				.imginfo {
-					width: 200rpx;
-					height: 200rpx;
+					width: 220rpx;
+					height: 220rpx;
 					display: inline-block;
-					box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+					box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+					background-color: #FFFFFF;
 					border-radius: 100%;
 					image {
+						margin-top: 10rpx;
 						width: 200rpx;
 						height: 200rpx;
 						border-radius: 100%;

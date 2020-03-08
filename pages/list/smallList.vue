@@ -12,9 +12,8 @@
 		</view>
 		
 		<view class="goods-list">
-			<!-- <view class="title">{{uni.getStorageSync('catName')}}</view> -->
 			<view class="product-list">
-				<view class="product align-center" :key="product.price" v-for="product in productList" @tap="toGoods(product)">
+				<view class="product align-center" :key="index" v-for="(product, index) in productList" @tap="toGoods(product)">
 					<view class="img align-center">
 						<image mode="widthFix" :src="product.img"></image>
 					</view>
@@ -38,10 +37,13 @@
 			}
 		},
 		created() { //此处用created相当于对前端页面数据进行初始化  
-			var address = 'http://120.55.87.80/server/smallList/' + uni.getStorageSync('enName') + '.php';
-			var value = uni.getStorageSync('brandName');
-			this.brand = value;
-			http.post(address, value).then(res => {
+			var address = 'http://120.55.87.80/server/smallList/smallList.php';
+			this.brand = uni.getStorageSync('brandName');
+			
+			http.post(address, {
+				enName: uni.getStorageSync('enName'),
+				value: uni.getStorageSync('brandName')
+			}).then(res => {
 				//这里是ES6的写法，get请求的地址
 				this.productList = res.data; //获取数据  
 				console.log('success');
