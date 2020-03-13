@@ -15,22 +15,22 @@
 
 ### 主页面
 
-![](C:\Users\99774\Documents\Tencent Files\997749670\FileRecv\MobileFile\IMG_7988.PNG)
+![](http://120.55.87.80/img/拟胭脂截图/1.png)
 
 
 
 ### 分类界面
 
-![](C:\Users\99774\Documents\Tencent Files\997749670\FileRecv\MobileFile\IMG_7989.PNG)
+![](http://120.55.87.80/img/拟胭脂截图/2.png)
 
 ### 个人中心界面
 
-![](C:\Users\99774\Documents\Tencent Files\997749670\FileRecv\MobileFile\IMG_7990.PNG)
+![](http://120.55.87.80/img/拟胭脂截图/3.png)
 
 ### 产品列表界面
 
-![](C:\Users\99774\Documents\Tencent Files\997749670\FileRecv\MobileFile\IMG_7991.PNG)
+![](http://120.55.87.80/img/拟胭脂截图/4.png)
 
 ### 产品详情页面
 
-![](C:\Users\99774\Documents\Tencent Files\997749670\FileRecv\MobileFile\IMG_7992.PNG)
+![](http://120.55.87.80/img/拟胭脂截图/5.png)
