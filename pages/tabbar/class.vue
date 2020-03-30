@@ -35,7 +35,8 @@
 					</view>
 					<view class="cu-list round-bottom menu-avatar">
 						<view class="cu-item" v-for="(box,i) in category.list" :key="i" @tap="toCategory(box)">
-							<image class="cu-avatar headround lg" :src="'http://120.55.87.80/img/brand/'+box.img"></image>
+							<!-- <image class="cu-avatar headround lg" :src="'https://www.xiaoqw.online/nyz/img/brand/'+box.img"></image> -->
+							<image class="cu-avatar headround lg" :src="'https://www.xiaoqw.online/nyz/img/category/'+category.id+'.jpg'"></image>
 							<view class="content">
 								<view style="color: #7A7E83;">{{box.name}}</view>
 							</view>

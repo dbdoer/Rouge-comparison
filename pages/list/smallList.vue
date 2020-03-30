@@ -17,7 +17,10 @@
 					<view class="img align-center">
 						<image mode="widthFix" :src="product.img"></image>
 					</view>
-					<view class="name">{{ product.name1 }}{{ product.name2 }}{{ product.name3 }}</view>
+					<view class="name">
+						<view class="name1">{{ product.name1 }}{{ product.name2 }}</view>
+						<view class="cu-tag bg-mine round">{{ product.name3 }}</view>
+					</view>
 				</view>
 			</view>
 		</view>
@@ -37,12 +40,12 @@
 			}
 		},
 		created() { //此处用created相当于对前端页面数据进行初始化  
-			var address = 'http://120.55.87.80/server/smallList/smallList.php';
+			var address = 'https://www.xiaoqw.online/nyz/server/smallList.php';
 			this.brand = uni.getStorageSync('brandName');
 			
 			http.post(address, {
 				enName: uni.getStorageSync('enName'),
-				value: uni.getStorageSync('brandName')
+				brand: uni.getStorageSync('brandName')
 			}).then(res => {
 				//这里是ES6的写法，get请求的地址	
 				this.productList = res.data; //获取数据  
@@ -84,35 +87,32 @@
 		width: 100%;
 		padding-top: 130rpx;
 		padding-bottom: 50rpx;
-		justify-content: center;
-
+	
 		.product-list {
 			width: 100%;
 			padding: 0 4% 0 4%;
-			justify-content: space-between;
-
+	
 			.product {
 				width: 100%;
 				border-radius: 50rpx;
 				display: flex;
 				justify-content: space-between;
 				background-color: #FFFFFF;
-				margin: 0 0 30rpx 0;
-				// box-shadow: 0px 0px 10px 0px #d0d0d0;
-
+				margin-bottom: 20px;
+	
 				.img {
 					width: 30%;
-					padding: 4% 5%;
-					image {
-						// border-radius: 50rpx 0 0rpx 50rpx;
-					}
+					padding: 4% 4%;
 				}
-
+	
 				.name {
 					width: 70%;
-					padding-right: 40rpx;
-					text-align: center;
 					font-size: 30rpx;
+					text-align: center;
+	
+					.name1 {
+						margin-bottom: 15px;
+					}
 				}
 			}
 		}

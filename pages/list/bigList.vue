@@ -4,20 +4,24 @@
 		<view class="cu-bar search header">
 			<view class="search-form round my-shadow">
 				<text class="cuIcon-search"></text>
-				<input class="text-center" @focus="InputFocus" @blur="InputBlur" :adjust-position="true" type="text" :placeholder="catName" confirm-type="search"></input>
+				<input class="text-center" @focus="InputFocus" @blur="InputBlur" :adjust-position="true" type="text" :placeholder="catName"
+				 confirm-type="search"></input>
 			</view>
 			<view class="action">
 				<button class="cu-btn bg-mine shadow-blur round">搜索</button>
 			</view>
 		</view>
-		
+
 		<view class="goods-list">
 			<view class="product-list">
 				<view class="product align-center" :key="index" v-for="(product, index) in productList" @tap="toGoods(product)">
 					<view class="img align-center">
 						<image mode="widthFix" :src="product.img"></image>
 					</view>
-					<view class="name">{{ product.name1 }}{{ product.name2 }}{{ product.name3 }}</view>
+					<view class="name">
+						<view class="name1">{{ product.name1 }}{{ product.name2 }}</view>
+						<view class="cu-tag bg-mine round">{{ product.name3 }}</view>
+					</view>
 				</view>
 			</view>
 		</view>
@@ -40,7 +44,7 @@
 			var catName = uni.getStorageSync('catName');
 			this.catName = catName;
 			var value = uni.getStorageSync('enName');
-			var address = 'http://120.55.87.80/server/bigList/bigList.php';
+			var address = 'https://www.xiaoqw.online/nyz/server/bigList.php';
 			http.post(address, value).then(res => {
 				//这里是ES6的写法，get请求的地址
 				this.productList = res.data; //获取数据  
@@ -56,7 +60,7 @@
 			//商品跳转
 			toGoods(e) {
 				uni.setStorageSync('goodsImg', e.img);
-				uni.setStorageSync('goodsName', e.name1+e.name2+e.name3);
+				uni.setStorageSync('goodsName', e.name1 + e.name2 + e.name3);
 				uni.setStorageSync('goodsName1', e.name1);
 				uni.setStorageSync('goodsName3', e.name3);
 				uni.navigateTo({
@@ -82,12 +86,10 @@
 		width: 100%;
 		padding-top: 130rpx;
 		padding-bottom: 50rpx;
-		justify-content: center;
 
 		.product-list {
 			width: 100%;
 			padding: 0 4% 0 4%;
-			justify-content: space-between;
 
 			.product {
 				width: 100%;
@@ -95,22 +97,21 @@
 				display: flex;
 				justify-content: space-between;
 				background-color: #FFFFFF;
-				margin: 0 0 30rpx 0;
-				// box-shadow: 0px 0px 10px 0px #d0d0d0;
+				margin-bottom: 20px;
 
 				.img {
 					width: 30%;
-					padding: 4% 5%;
-					image {
-						// border-radius: 50rpx 0 0rpx 50rpx;
-					}
+					padding: 4% 4%;
 				}
 
 				.name {
 					width: 70%;
-					padding-right: 40rpx;
-					text-align: center;
 					font-size: 30rpx;
+					text-align: center;
+
+					.name1 {
+						margin-bottom: 15px;
+					}
 				}
 			}
 		}

@@ -29,9 +29,12 @@
 				<view class="product" v-for="(product,index) in productList" :key="index" @tap="toGoods(product)">
 					<image mode="widthFix" :src="product.img"></image>
 					<view class="name">
-						<view>{{ product.name1 }}</view>
-						<view>{{ product.name2 }}</view>
-						<view>{{ product.name3 }}</view>
+						<view class="name1">{{ product.name1 }}</view>
+						<view class="name2">{{ product.name2 }}</view>
+						<view class="name3">
+							<span class="cuIcon-tag" style="margin-right: 10px;"></span>
+							{{ product.name3 }}{{ product.name4 }}
+						</view>
 					</view>
 				</view>
 			</view>
@@ -73,49 +76,49 @@
 						id: 1,
 						name: '口红/唇釉',
 						enname: 'Lipstick',
-						img: 'http://120.55.87.80/img/category/1.jpg'
+						img: 'https://www.xiaoqw.online/nyz/img/category/1.jpg'
 					},
 					{
 						id: 2,
 						name: '粉底/气垫',
 						enname: 'Foundation',
-						img: 'http://120.55.87.80/img/category/2.jpg'
+						img: 'https://www.xiaoqw.online/nyz/img/category/2.jpg'
 					},
 					{
 						id: 3,
 						name: '腮红/高光',
 						enname: 'Blush',
-						img: 'http://120.55.87.80/img/category/3.jpg'
+						img: 'https://www.xiaoqw.online/nyz/img/category/3.jpg'
 					},
 					{
 						id: 4,
 						name: '隔离/妆前',
 						enname: 'Primer',
-						img: 'http://120.55.87.80/img/category/4.jpg'
+						img: 'https://www.xiaoqw.online/nyz/img/category/4.jpg'
 					},
 					{
 						id: 5,
 						name: '定妆',
 						enname: 'FixedMakeup',
-						img: 'http://120.55.87.80/img/category/5.jpg'
+						img: 'https://www.xiaoqw.online/nyz/img/category/5.jpg'
 					},
 					{
 						id: 6,
 						name: '防晒',
 						enname: 'Sunscreen',
-						img: 'http://120.55.87.80/img/category/6.jpg'
+						img: 'https://www.xiaoqw.online/nyz/img/category/6.jpg'
 					},
 					{
 						id: 7,
 						name: '修容',
 						enname: 'Modify',
-						img: 'http://120.55.87.80/img/category/7.jpg'
+						img: 'https://www.xiaoqw.online/nyz/img/category/7.jpg'
 					},
 					{
 						id: 8,
 						name: '眼妆',
 						enname: 'EyeMakeup',
-						img: 'http://120.55.87.80/img/category/8.jpg'
+						img: 'https://www.xiaoqw.online/nyz/img/category/8.jpg'
 					}
 				],
 				//猜你喜欢列表
@@ -124,7 +127,7 @@
 		},
 		//此处用created相当于对前端页面数据进行初始化
 		created() {
-			var address = 'http://120.55.87.80/server/Reccommend/Recommend.php';
+			var address = 'https://www.xiaoqw.online/nyz/server/Recommend.php';
 			http.post(address, 'Recommend').then(res => {
 				this.productList = res.data; //获取数据  
 				console.log('success');
@@ -165,7 +168,7 @@
 				uni.setStorageSync('goodsImg', e.img);
 				uni.setStorageSync('goodsName', e.name1 + e.name2 + e.name3);
 				uni.setStorageSync('goodsName1', e.name1);
-				uni.setStorageSync('goodsName3', e.name3);
+				uni.setStorageSync('goodsName3', e.name4);
 				uni.navigateTo({
 					url: "../goods/goods",
 					animationType: 'pop-in',
@@ -187,7 +190,7 @@
 			height: 308rpx;
 			overflow: hidden;
 			border-radius: 50rpx;
-			box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+			// box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
 			//兼容ios，微信小程序
 			position: relative;
 			z-index: 1;
@@ -267,8 +270,7 @@
 	}
 
 	.goods-list {
-		width: 95%;
-		margin: 0 3%;
+		width: 100%;
 		justify-content: center;
 
 		.title {
@@ -289,10 +291,12 @@
 			flex-wrap: wrap;
 
 			.product {
-				width: 48%;
+				width: 46%;
 				border-radius: 50rpx;
 				background-color: #FFFFFF;
-				margin: 0 0 30rpx 0;
+				margin-left: 5px;
+				margin-right: 5px;
+				margin-bottom: 25px;
 				// box-shadow: 0px 0px 10px 0px #d0d0d0;
 
 				image {
@@ -303,19 +307,34 @@
 
 				.name {
 					width: 100%;
-					padding: 6% 6% 8% 8%;
+					padding-top: 6%;
 					color: #3c3c3c;
 					text-align: center;
-					justify-content: space-between;
 					overflow: hidden;
 					font-size: 30rpx;
+
+					.name1 {
+						margin-bottom: 10px;
+						font-weight: 600;
+					}
+
+					.name2 {
+						margin-bottom: 10px;
+					}
+
+					.name3 {
+						margin-bottom: 15px;
+						color: #CF6C7E;
+						border-bottom-left-radius: 25px;
+						border-bottom-right-radius: 25px;
+					}
 				}
 			}
 		}
 
 		.bottom-text {
 			width: 100%;
-			margin-bottom: 20rpx;
+			margin-bottom: 40rpx;
 			display: flex;
 			justify-content: center;
 			align-items: center;

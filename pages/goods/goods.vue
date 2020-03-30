@@ -1,9 +1,7 @@
 <template>
 	<view>
-		<!-- <w-loading mask="false" click="true" ref="loading"></w-loading> -->
-		<view class="picture">
-			<image class="shadow-blur round" mode="widthFix" :src="img"></image>
-		</view>
+		<image class="picture shadow-blur" mode="widthFix" :src="img"></image>
+
 		<view class="collection align-center">
 			<view class="name">{{ name }}</view>
 			<view class="icon-box">
@@ -15,10 +13,10 @@
 			<view class="platform-list">
 				<view class="platform align-center">
 					<view class="background-left align-center">
-						<view v-if="this.jdInfo !== null" class="price">￥{{ jdInfo.price }}</view>
-						<view v-if="this.jdInfo === null" class="price">暂无</view>
+						<view v-if="jdInfo.price" class="price">￥{{ jdInfo.price }}</view>
+						<view v-if="!jdInfo.price" class="price">暂无</view>
 					</view>
-					<button class="background-right cu-btn round align-center" @tap="toShop(good)">
+					<button class="background-right cu-btn round align-center ctag" :data-clipboard-text="jdInfo.address" @tap="copy()">
 						<view class="name">京东 TO SHOP</view>
 					</button>
 				</view>
@@ -26,10 +24,10 @@
 			<view class="platform-list">
 				<view class="platform align-center">
 					<view class="background-left align-center">
-						<view v-if="this.tmInfo !== null" class="price">￥{{ tmInfo.price }}</view>
-						<view v-if="this.tmInfo === null" class="price">暂无</view>
+						<view v-if="tmInfo.price" class="price">￥{{ tmInfo.price }}</view>
+						<view v-if="!tmInfo.price" class="price">暂无</view>
 					</view>
-					<button class="background-right cu-btn round align-center" @tap="toShop(good)">
+					<button class="background-right cu-btn round align-center ctag" :data-clipboard-text="tmInfo.address" @tap="copy()">
 						<view class="name">天猫 TO SHOP</view>
 					</button>
 				</view>
@@ -39,7 +37,7 @@
 					<view class="background-left align-center">
 						<view class="price">暂无</view>
 					</view>
-					<button class="background-right cu-btn round align-center" @tap="toShop(good)">
+					<button class="background-right cu-btn round align-center">
 						<view class="name">小红书 TO SHOP</view>
 					</button>
 				</view>
@@ -49,13 +47,13 @@
 					<view class="background-left align-center">
 						<view class="price">暂无</view>
 					</view>
-					<button class="background-right cu-btn round align-center" @tap="toShop(good)">
+					<button class="background-right cu-btn round align-center">
 						<view class="name">拼多多 TO SHOP</view>
 					</button>
 				</view>
 			</view>
 		</view>
-		<view style="height: 50rpx;"></view>
+		<view style="height: 80rpx; background-color: #f7f2f0;"></view>
 	</view>
 	</view>
 </template>
@@ -63,13 +61,14 @@
 <script>
 	import Vuex from "vuex";
 	import axios from "axios";
-	import http from '@/utils/http.js'
+	import http from '@/utils/http.js';
+	import Clipboard from 'clipboard';
 
 	export default {
 		data() {
 			return {
-				jdInfo: null,
-				tmInfo: null,
+				jdInfo: [],
+				tmInfo: [],
 				name: null,
 				img: null,
 				collectIcon: null,
@@ -78,30 +77,27 @@
 		created() { //此处用created相当于对前端页面数据进行初始化  
 			this.name = uni.getStorageSync('goodsName');
 			this.img = uni.getStorageSync('goodsImg');
-			
-			// var value = '%' + uni.getStorageSync('goodsName1') + '%' + uni.getStorageSync('goodsName3') + '%';
-			var address = 'http://120.55.87.80/server/Goods/Goods.php';
 
+			var address = 'https://www.xiaoqw.online/nyz/server/Goods.php';
 			http.post(address, {
-				enName: uni.getStorageSync('enName'),
-				brand: '京东',
-				value: '%' + uni.getStorageSync('goodsName1') + '%' + uni.getStorageSync('goodsName3') + '%'
-			}).then(res => {
-				this.jdInfo = res.data; //获取数据  
-				console.log('success');
-				console.log(this.jdInfo);
-				// this.$refs.loading.close();
-			}),
-			http.post(address, {
-				enName: uni.getStorageSync('enName'),
-				brand: '天猫',
-				value: '%' + uni.getStorageSync('goodsName1') + '%' + uni.getStorageSync('goodsName3') + '%'
-			}).then(res => {
-				this.tmInfo = res.data; //获取数据  
-				console.log('success');
-				console.log(this.tmInfo);
-				// this.$refs.loading.close();
-			})
+					enName: uni.getStorageSync('enName'),
+					brand: '京东',
+					goodsName: '%' + uni.getStorageSync('goodsName1') + '%' + uni.getStorageSync('goodsName3') + '%'
+				}).then(res => {
+					this.jdInfo = res.data; //获取数据
+					console.log('success');
+					console.log(this.jdInfo);
+				}),
+
+				http.post(address, {
+					enName: uni.getStorageSync('enName'),
+					brand: '天猫',
+					goodsName: '%' + uni.getStorageSync('goodsName1') + '%' + uni.getStorageSync('goodsName3') + '%'
+				}).then(res => {
+					this.tmInfo = res.data; //获取数据
+					console.log('success');
+					console.log(this.tmInfo);
+				});
 		},
 		onReady() {
 			// this.$refs.loading.open();
@@ -109,20 +105,29 @@
 		},
 		methods: {
 			toCollect() {
-				if(this.collectIcon == 'cuIcon-like') {
+				if (this.collectIcon == 'cuIcon-like') {
 					this.collectIcon = 'cuIcon-likefill'
-				}
-				else if(this.collectIcon == 'cuIcon-likefill') {
+				} else if (this.collectIcon == 'cuIcon-likefill') {
 					this.collectIcon = 'cuIcon-like'
 				}
 			},
-			toShop(e) {
-				uni.setStorageSync('webUrl', e.address);
-				uni.navigateTo({
-					url: '../shopweb/shopweb',
-					animationType: 'pop-in',
-					animationDuration: 200
-				});
+			copy() {
+				var clipboard = new Clipboard('.ctag')
+				clipboard.on('success', e => {
+					console.log('复制成功');
+					uni.showToast({
+						title: '链接已复制',
+						icon: 'none'
+					});
+					// 释放内存
+					clipboard.destroy();
+				})
+				clipboard.on('error', e => {
+					// 不支持复制
+					console.log('不支持复制');
+					// 释放内存
+					clipboard.destroy();
+				})
 			}
 		}
 	}
@@ -138,13 +143,9 @@
 	}
 
 	.picture {
-		width: 90%;
-		margin: 0 auto;
-		justify-content: center;
-
-		image {
-			width: 100%;
-		}
+		width: 100%;
+		border-bottom-left-radius: 25px;
+		border-bottom-right-radius: 25px;
 	}
 
 	.collection {
@@ -170,7 +171,7 @@
 				border-radius: 50rpx;
 				background-color: #FFFFFF;
 			}
-			
+
 			.size {
 				font-size: 40rpx;
 			}
@@ -180,10 +181,13 @@
 	.platform-box {
 		width: 100%;
 		justify-content: center;
+		background-color: #f7f2f0;
+		border-top-left-radius: 25px;
+		border-top-right-radius: 25px;
 
 		.platform-list {
 			width: 100%;
-			padding: 0 4% 0 4%;
+			padding-top: 20px;
 			justify-content: space-between;
 
 			.platform {
@@ -191,8 +195,6 @@
 				height: 150rpx;
 				border-radius: 50rpx;
 				display: flex;
-				background-color: #FFFFFF;
-				margin: 0 0 50rpx 0;
 
 				.background-left {
 					width: 40%;
@@ -207,9 +209,9 @@
 				}
 
 				.background-right {
-					width: 60%;
+					width: 50%;
 					height: 90rpx;
-					margin-right: 30rpx;
+					text-align: center;
 					background-color: #CF6C7E;
 
 					.name {

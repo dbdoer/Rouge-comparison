@@ -29,14 +29,10 @@
 	}, {
 		"path": "pages/goods/goods",
 		"style": {
-			"navigationBarTitleText": "美妆详情"
+			"navigationBarTitleText": "美妆详情",
+			"navigationBarBackgroundColor": "#FFFFFF"
 		}
 	}, {
-		"path": "pages/shopweb/shopweb",
-		"style": {
-			"navigationBarTitleText": "SHOP"
-		}
-	}    ,{
             "path" : "pages/search/search",
             "style" : {
 				"navigationBarTitleText": "搜索结果"

@@ -51,7 +51,7 @@
 		created() { //此处用created相当于对前端页面数据进行初始化  
 			this.searchText = uni.getStorageSync('searchText');
 
-			var address = 'http://120.55.87.80/server/search/search.php';
+			var address = 'https://www.xiaoqw.online/nyz/server/search.php';
 			http.post(address).then(res => {
 				//这里是ES6的写法，get请求的地址
 				this.productList = res.data; //获取数据  
