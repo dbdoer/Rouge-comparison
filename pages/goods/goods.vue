@@ -16,7 +16,7 @@
 						<view v-if="jdInfo.price" class="price">￥{{ jdInfo.price }}</view>
 						<view v-if="!jdInfo.price" class="price">暂无</view>
 					</view>
-					<button class="background-right cu-btn round align-center ctag" :data-clipboard-text="jdInfo.address" @tap="copy()">
+					<button class="background-right cu-btn round align-center" @tap="paste(jdInfo.address)">
 						<view class="name">京东 TO SHOP</view>
 					</button>
 				</view>
@@ -27,7 +27,7 @@
 						<view v-if="tmInfo.price" class="price">￥{{ tmInfo.price }}</view>
 						<view v-if="!tmInfo.price" class="price">暂无</view>
 					</view>
-					<button class="background-right cu-btn round align-center ctag" :data-clipboard-text="tmInfo.address" @tap="copy()">
+					<button class="background-right cu-btn round align-center" @tap="paste(tmInfo.address)">
 						<view class="name">天猫 TO SHOP</view>
 					</button>
 				</view>
@@ -62,7 +62,6 @@
 	import Vuex from "vuex";
 	import axios from "axios";
 	import http from '@/utils/http.js';
-	import Clipboard from 'clipboard';
 
 	export default {
 		data() {
@@ -111,23 +110,17 @@
 					this.collectIcon = 'cuIcon-like'
 				}
 			},
-			copy() {
-				var clipboard = new Clipboard('.ctag')
-				clipboard.on('success', e => {
-					console.log('复制成功');
-					uni.showToast({
-						title: '链接已复制',
-						icon: 'none'
-					});
-					// 释放内存
-					clipboard.destroy();
-				})
-				clipboard.on('error', e => {
-					// 不支持复制
-					console.log('不支持复制');
-					// 释放内存
-					clipboard.destroy();
-				})
+			paste(value) {
+				uni.setClipboardData({
+					data: value,
+					success: function() {
+						console.log('success');
+						uni.showToast({
+							title: '链接已复制',
+							icon: 'none'
+						});
+					}
+				});
 			}
 		}
 	}
