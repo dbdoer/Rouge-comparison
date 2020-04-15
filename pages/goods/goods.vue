@@ -3,7 +3,10 @@
 		<image class="picture shadow-blur" mode="widthFix" :src="img"></image>
 
 		<view class="collection align-center">
-			<view class="name">{{ name }}</view>
+			<view class="name">
+				<p>{{ nameA }}</p>
+				<p>{{ nameB }}</p>
+			</view>
 			<view class="icon-box">
 				<button class="icon-round cu-btn size" :class="collectIcon" @tap="toCollect()"></button>
 			</view>
@@ -68,20 +71,22 @@
 			return {
 				jdInfo: [],
 				tmInfo: [],
-				name: null,
+				nameA: null,
+				nameB: null,
 				img: null,
 				collectIcon: null,
 			}
 		},
 		created() { //此处用created相当于对前端页面数据进行初始化  
-			this.name = uni.getStorageSync('goodsName');
+			this.nameA = uni.getStorageSync('goodsNameA');
+			this.nameB = uni.getStorageSync('goodsNameB');
 			this.img = uni.getStorageSync('goodsImg');
 
 			var address = 'https://www.xiaoqw.online/nyz/server/Goods.php';
 			http.post(address, {
 					enName: uni.getStorageSync('enName'),
 					brand: '京东',
-					goodsName: '%' + uni.getStorageSync('goodsName1') + '%' + uni.getStorageSync('goodsName3') + '%'
+					goodsName: '%' + uni.getStorageSync('goodsName1') + '%' + uni.getStorageSync('goodsName4') + '%'
 				}).then(res => {
 					this.jdInfo = res.data; //获取数据
 					console.log('success');
@@ -91,7 +96,7 @@
 				http.post(address, {
 					enName: uni.getStorageSync('enName'),
 					brand: '天猫',
-					goodsName: '%' + uni.getStorageSync('goodsName1') + '%' + uni.getStorageSync('goodsName3') + '%'
+					goodsName: '%' + uni.getStorageSync('goodsName1') + '%' + uni.getStorageSync('goodsName4') + '%'
 				}).then(res => {
 					this.tmInfo = res.data; //获取数据
 					console.log('success');
@@ -152,6 +157,7 @@
 			margin-left: 10%;
 			font-weight: 600;
 			font-size: 35rpx;
+			line-height: 60rpx;
 		}
 
 		.icon-box {

@@ -9,7 +9,7 @@
 						<view class="img align-center">
 							<image mode="widthFix" :src="product.img"></image>
 						</view>
-						<view class="name">{{ product.name1 }}{{ product.name2 }}{{ product.name3 }}</view>
+						<view class="name">{{ product.name1 }}{{ product.name2 }}{{ product.name3 }}{{ product.name4 }}</view>
 					</view>
 				</view>
 			</view>
@@ -27,7 +27,7 @@
 						<view class="img align-center">
 							<image mode="widthFix" :src="product.img"></image>
 						</view>
-						<view class="name">{{ product.name1 }}{{ product.name2 }}{{ product.name3 }}</view>
+						<view class="name">{{ product.name1 }}{{ product.name2 }}{{ product.name3 }}{{ product.name4 }}</view>
 					</view>
 				</view>
 			</view>
@@ -69,9 +69,10 @@
 			//商品跳转
 			toGoods(e) {
 				uni.setStorageSync('goodsImg', e.img);
-				uni.setStorageSync('goodsName', e.name1 + e.name2 + e.name3);
+				uni.setStorageSync('goodsNameA', e.name1 + e.name2);
+				uni.setStorageSync('goodsNameB', e.name3 + e.name4);
 				uni.setStorageSync('goodsName1', e.name1);
-				uni.setStorageSync('goodsName3', e.name3);
+				uni.setStorageSync('goodsName4', e.name4);
 				uni.navigateTo({
 					url: "../goods/goods",
 					animationType: 'pop-in',
@@ -83,7 +84,7 @@
 				if (search) {
 					const result = [];
 					for (let i = 0; i < this.productList.length; i++) {
-						var product = this.productList[i].name1 + this.productList[i].name2 + this.productList[i].name3;
+						var product = this.productList[i].name1 + this.productList[i].name2 + this.productList[i].name3 + this.productList[i].name4;
 						if (String(product).toLowerCase().indexOf(search) > -1) {
 							result.push(this.productList[i]);
 						}

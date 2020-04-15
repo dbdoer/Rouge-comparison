@@ -19,7 +19,7 @@
 					</view>
 					<view class="name">
 						<view class="name1">{{ product.name1 }}{{ product.name2 }}</view>
-						<view class="cu-tag bg-mine round">{{ product.name3 }}</view>
+						<view class="cu-tag bg-mine round">{{ product.name3 }}{{ product.name4 }}</view>
 					</view>
 				</view>
 			</view>
@@ -61,9 +61,10 @@
 			//商品跳转
 			toGoods(e) {
 				uni.setStorageSync('goodsImg', e.img);
-				uni.setStorageSync('goodsName', e.name1+e.name2+e.name3);
+				uni.setStorageSync('goodsNameA', e.name1 + e.name2);
+				uni.setStorageSync('goodsNameB', e.name3 + e.name4);
 				uni.setStorageSync('goodsName1', e.name1);
-				uni.setStorageSync('goodsName3', e.name3);
+				uni.setStorageSync('goodsName4', e.name4);
 				uni.navigateTo({
 					url: "../goods/goods",
 					animationType: 'pop-in',

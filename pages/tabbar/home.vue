@@ -166,9 +166,10 @@
 			toGoods(e) {
 				uni.setStorageSync('enName', e.class);
 				uni.setStorageSync('goodsImg', e.img);
-				uni.setStorageSync('goodsName', e.name1 + e.name2 + e.name3);
+				uni.setStorageSync('goodsNameA', e.name1 + e.name2);
+				uni.setStorageSync('goodsNameB', e.name3 + e.name4);
 				uni.setStorageSync('goodsName1', e.name1);
-				uni.setStorageSync('goodsName3', e.name4);
+				uni.setStorageSync('goodsName4', e.name4);
 				uni.navigateTo({
 					url: "../goods/goods",
 					animationType: 'pop-in',
@@ -320,6 +321,7 @@
 
 					.name2 {
 						margin-bottom: 10px;
+						color: #909399;
 					}
 
 					.name3 {
