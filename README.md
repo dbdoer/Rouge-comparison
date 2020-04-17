@@ -1,4 +1,4 @@
-<h1 align="center">Welcome to vue-smallFrog-bookstore 👋</h1>
+<h1 align="center">Welcome to Rouge-comparison 👋</h1>
 
 ## 拟胭脂微信小程序
 
@@ -18,7 +18,7 @@
 
 ###	主界面
 
-<img src="https://s1.ax1x.com/2020/04/17/JVKzuV.jpg" style="zoom: 20%;" />
+<img src="https://s1.ax1x.com/2020/04/17/JVKzuV.jpg" />
 
 ###	分类界面
 
