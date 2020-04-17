@@ -14,27 +14,18 @@
 - 产品搜索功能（初步实现）
 - 收藏并跟踪产品价格，当产品价格发生变化是会提醒用户（开发中）
 
-## 部分截图
-
-###	主界面
-
-<img src="https://s1.ax1x.com/2020/04/17/JVKzuV.jpg" alt="JVKzuV.jpg" border="0" width="250" />
-
-###	分类界面
-
-<img src="https://www.xiaoqw.online/nyz/img/Preview/class.png" border="0" width="250"/>
-
-###	个人中心界面
-
-<img src="https://www.xiaoqw.online/nyz/img/Preview/user.png" border="0" width="250"/>
-
-###	产品列表界面
+## 界面截图
 
 <figure class="half" style="text-align: center;">
-    <img src="https://www.xiaoqw.online/nyz/img/Preview/list1.png" border="0" width="250" style="margin-right: 10%" />
-    <img src="https://www.xiaoqw.online/nyz/img/Preview/list2.png" border="0" width="250" />
+    <img src="https://s1.ax1x.com/2020/04/17/JVKzuV.jpg" alt="JVKzuV.jpg" border="0" width="250" />
+    <img src="https://s1.ax1x.com/2020/04/17/JVKvj0.jpg" border="0" width="250" style="margin-right: 10%"  />
+    <img src="https://s1.ax1x.com/2020/04/17/JVMCEF.png" border="0" width="250" style="margin-right: 10%" />
 </figure>
 
-###	产品详情界面
+<figure class="half" style="text-align: center;">
+    <img src="https://s1.ax1x.com/2020/04/17/JVMPN4.png" border="0" width="250" style="margin-right: 10%" />
+    <img src="https://s1.ax1x.com/2020/04/17/JVMpHU.png" border="0" width="250" style="margin-right: 10%" />
+    <img src="https://s1.ax1x.com/2020/04/17/JVMSBT.jpg" border="0" width="250" />
+</figure>
 
-<img src="https://www.xiaoqw.online/nyz/img/Preview/good.png" border="0" width="250" />
+
