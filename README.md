@@ -18,7 +18,7 @@
 
 ###	主界面
 
-<img src="https://s1.ax1x.com/2020/04/17/JVKzuV.jpg" />
+[![JVKzuV.jpg](https://s1.ax1x.com/2020/04/17/JVKzuV.jpg)](https://imgchr.com/i/JVKzuV)
 
 ###	分类界面
 
