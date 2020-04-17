@@ -22,19 +22,19 @@
 
 ###	分类界面
 
-<img src="https://www.xiaoqw.online/nyz/img/Preview/class.png" style="zoom: 20%;" />
+<img src="https://www.xiaoqw.online/nyz/img/Preview/class.png" border="0" width="250" height="445" />
 
 ###	个人中心界面
 
-<img src="https://www.xiaoqw.online/nyz/img/Preview/user.png" style="zoom: 20%;" />
+<img src="https://www.xiaoqw.online/nyz/img/Preview/user.png" border="0" width="250" height="445" />
 
 ###	产品列表界面
 
 <figure class="half" style="text-align: center;">
-    <img src="https://www.xiaoqw.online/nyz/img/Preview/list1.png" style="zoom: 20%; margin-right: 10%" />
-    <img src="https://www.xiaoqw.online/nyz/img/Preview/list2.png" style="zoom: 20%;" />
+    <img src="https://www.xiaoqw.online/nyz/img/Preview/list1.png" border="0" width="250" height="445" style="margin-right: 10%" />
+    <img src="https://www.xiaoqw.online/nyz/img/Preview/list2.png" border="0" width="250" height="445" />
 </figure>
 
 ###	产品详情界面
 
-<img src="https://www.xiaoqw.online/nyz/img/Preview/good.png" style="zoom: 20%;" />
+<img src="https://www.xiaoqw.online/nyz/img/Preview/good.png" border="0" width="250" height="445" />
