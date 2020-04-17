@@ -18,23 +18,23 @@
 
 ###	主界面
 
-[![JVKzuV.jpg](https://s1.ax1x.com/2020/04/17/JVKzuV.jpg)](https://imgchr.com/i/JVKzuV)
+<img src="https://s1.ax1x.com/2020/04/17/JVKzuV.jpg" alt="JVKzuV.jpg" border="0" width="250" />
 
 ###	分类界面
 
-<img src="https://www.xiaoqw.online/nyz/img/Preview/class.png" border="0" width="250" height="445" />
+<img src="https://www.xiaoqw.online/nyz/img/Preview/class.png" border="0" width="250"/>
 
 ###	个人中心界面
 
-<img src="https://www.xiaoqw.online/nyz/img/Preview/user.png" border="0" width="250" height="445" />
+<img src="https://www.xiaoqw.online/nyz/img/Preview/user.png" border="0" width="250"/>
 
 ###	产品列表界面
 
 <figure class="half" style="text-align: center;">
-    <img src="https://www.xiaoqw.online/nyz/img/Preview/list1.png" border="0" width="250" height="445" style="margin-right: 10%" />
-    <img src="https://www.xiaoqw.online/nyz/img/Preview/list2.png" border="0" width="250" height="445" />
+    <img src="https://www.xiaoqw.online/nyz/img/Preview/list1.png" border="0" width="250" style="margin-right: 10%" />
+    <img src="https://www.xiaoqw.online/nyz/img/Preview/list2.png" border="0" width="250" />
 </figure>
 
 ###	产品详情界面
 
-<img src="https://www.xiaoqw.online/nyz/img/Preview/good.png" border="0" width="250" height="445" />
+<img src="https://www.xiaoqw.online/nyz/img/Preview/good.png" border="0" width="250" />
