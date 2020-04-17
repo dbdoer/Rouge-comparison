@@ -18,16 +18,16 @@
 
 <center>
     <figure class="third">
-        <img src="https://s1.ax1x.com/2020/04/17/JVKzuV.jpg" alt="JVKzuV.jpg" border="0" width="250" />
-        <img src="https://s1.ax1x.com/2020/04/17/JVKvj0.jpg" border="0" width="250" style="margin-right: 10%"  />
-        <img src="https://s1.ax1x.com/2020/04/17/JVMCEF.png" border="0" width="250" style="margin-right: 10%" />
+        <img src="https://s1.ax1x.com/2020/04/17/JVKzuV.jpg" border="0" width="250" />
+        <img src="https://s1.ax1x.com/2020/04/17/JVKvj0.jpg" border="0" width="250" />
+        <img src="https://s1.ax1x.com/2020/04/17/JVMCEF.png" border="0" width="250" />
     </figure>
 </center>
 
 <center>
     <figure class="third">
-        <img src="https://s1.ax1x.com/2020/04/17/JVMPN4.png" border="0" width="250" style="margin-right: 10%" />
-        <img src="https://s1.ax1x.com/2020/04/17/JVMpHU.png" border="0" width="250" style="margin-right: 10%" />
+        <img src="https://s1.ax1x.com/2020/04/17/JVMPN4.png" border="0" width="250" />
+        <img src="https://s1.ax1x.com/2020/04/17/JVMpHU.png" border="0" width="250" />
         <img src="https://s1.ax1x.com/2020/04/17/JVMSBT.jpg" border="0" width="250" />
     </figure>
 </center>
