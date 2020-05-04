@@ -16,10 +16,9 @@
 
 ## 界面截图
 
-
-    <figure class="third">
-        <img src="https://s1.ax1x.com/2020/04/17/JVKzuV.jpg" border="0" width="200" /><img src="https://s1.ax1x.com/2020/04/17/JVKvj0.jpg" border="0" width="200" /><img src="https://s1.ax1x.com/2020/04/17/JVMCEF.png" border="0" width="200" />
-    </figure>
+<figure class="third">
+    <img src="https://s1.ax1x.com/2020/04/17/JVKzuV.jpg" border="0" width="200" /><img src="https://s1.ax1x.com/2020/04/17/JVKvj0.jpg" border="0" width="200" /><img src="https://s1.ax1x.com/2020/04/17/JVMCEF.png" border="0" width="200" />
+</figure>
 
 <center>
     <figure class="third">
